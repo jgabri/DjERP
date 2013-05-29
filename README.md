@@ -3,7 +3,7 @@ DjERP
 
 Requerimientos
 --------------
-1. Python 1.7
+1. Python 2.7
 2. Virtualenv
 
 Instalación
