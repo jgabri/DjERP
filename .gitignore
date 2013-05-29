@@ -50,3 +50,6 @@ env
 
 #Os
 .DS_Store
+
+#DB
+DjERP_db
