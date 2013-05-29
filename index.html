@@ -4,7 +4,7 @@
 
   <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>nonameERP</title>
+    <title>DjERP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="manuel calero solis">
@@ -35,7 +35,7 @@
     /* Carousel base class */
 
     .carousel {
-      margin-bottom: 60px;
+      margin-bottom: 160px;
     }
 
     .carousel .container {
@@ -68,7 +68,7 @@
     .carousel-caption {
       position:absolute;
       max-width:550px;
-      padding:35px 20px;
+      padding:35px 35px;
       margin-top:35%;
       margin-left:85px;
       margin-bottom:45%;
@@ -93,7 +93,7 @@
       font:14px Arial,sans-serif
     }
 
-    #alertUsuario, #alertContrasenya {
+    #alertFormulario {
       display: none;
     }
 
@@ -169,13 +169,16 @@
 
         <div class="carousel-caption">
   
-          <h1>DjgERP!</h1>
-          
-          <div id="mc_embed_signup">
+          <div>
+
+            <h1>DjERP!</h1>
             
             <form action="" method="post" id="formInicioSesion" class="validate" >
               
               <fieldset>
+
+                <div class="alert alert-error" id="alertFormulario">
+                </div>
 
                 <div class="control-group">
                   <label class="control-label" for="input01">Usuario</label>
@@ -188,12 +191,8 @@
                   </div>
                 </div>
 
-                <div class="alert alert-error" id="alertUsuario">
-                  Nombre de usuario incorrecto
-                </div>
-
                 <div class="control-group">
-                  <label>Contrase&ntilde;a</label>
+                  <label class="control-label">Contrase&ntilde;a</label>
                   <div class="controls">
                     <div class="input-prepend">
                       <span class="add-on"><i class="icon-lock"></i></span>
@@ -202,10 +201,6 @@
                   </div>
                 </div>
                 
-                <div class="alert alert-error" id="alertContrasenya">
-                  Contrase&ntilde;a incorrecta
-                </div>
-
                 <div class="control-group">
                   <label class="control-label" for="input01"></label>
                   <div class="controls">
@@ -260,6 +255,7 @@
     <script src="./bootstrap/js/bootstrap-typeahead.js"></script>
 
     <script type="text/javascript">
+
     $(document).ready(function () 
     {
 
@@ -267,27 +263,34 @@
       {
 
         var validFormulario = true;
+        var textFormulario  = "";
+
+        $("#alertFormulario").hide();
 
         if( $("#inputUsuario").val() != "demo" ){
+            textFormulario  += "<li>Nombre de usuario erroneo</li>"
             $("#inputUsuario").parents('.control-group').addClass('error');
-            $("#alertUsuario").show();
-            validFormulario = false;
         }
         else
         {
             $("#inputUsuario").parents('.control-group').removeClass('error');
-            $("#alertUsuario").hide();
         }
 
         if( $("#inputContrasenya").val() != "demo" ){
+            textFormulario  += "<li>Contrase&ntilde;a erronea</li>"
             $("#inputContrasenya").parents('.control-group').addClass('error');
-            $("#alertContrasenya").show();
-            validFormulario = false;
         }
-        else
+        else 
         {
             $("#inputContrasenya").parents('.control-group').removeClass('error');
-            $("#alertContrasenya").hide();
+        }
+
+        if ( textFormulario != "" )
+        {
+            validFormulario = false;
+
+            $("#alertFormulario").html('<ul>' + textFormulario + '</ul>');
+            $("#alertFormulario").show();
         }
 
         return validFormulario;
