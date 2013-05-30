@@ -21,6 +21,9 @@ Estos pasos funcionan correctamente en Linux y Mac OS
 1. Iniciamos nuestra aplicación:
 <tt>python manage.py runserver</tt>
 
+1. En tu navegador ingresa a la siguiente url:
+<tt>http://127.0.0.1:8000/admin</tt>
+
 
 Instalación con virtualenv
 --------------------------
